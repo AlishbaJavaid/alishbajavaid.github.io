@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alishba Javaid — Software QA Engineer</title>
+<meta name="description" content="Alishba Javaid — Software QA Engineer specializing in Manual, API & Performance Testing. Based in Lahore, Pakistan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EEF1EF;
+    --bg-panel:#FFFFFF;
+    --ink:#151C22;
+    --ink-muted:#57646C;
+    --line:#D7DDD8;
+    --console:#1B2329;
+    --console-line:#2C363E;
+    --console-text:#C7D0D3;
+    --pass:#2E8B67;
+    --pass-dim:#DCEEE5;
+    --amber:#C1762E;
+    --amber-dim:#F3E3D2;
+    --radius:2px;
+    --maxw:1080px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+  }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Space Grotesk',sans-serif;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+
+  a{ color:inherit; }
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--pass);
+    outline-offset:3px;
+  }
+
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 28px; }
+
+  code, .mono{ font-family:'IBM Plex Mono',monospace; }
+
+  /* ---------- NAV ---------- */
+  header.site{
+    position:sticky; top:0; z-index:50;
+    background:rgba(238,241,239,0.9);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 28px;
+    max-width:var(--maxw); margin:0 auto;
+  }
+  .brand{
+    font-family:'IBM Plex Mono',monospace;
+    font-weight:600; font-size:14px; letter-spacing:0.02em;
+    display:flex; align-items:center; gap:8px;
+  }
+  .brand .dot{ width:8px;height:8px;background:var(--pass);border-radius:50%; display:inline-block; }
+  nav.links{ display:flex; gap:28px; }
+  nav.links a{
+    text-decoration:none; font-size:14px; color:var(--ink-muted); font-weight:500;
+    transition:color .15s;
+  }
+  nav.links a:hover{ color:var(--ink); }
+  .nav-toggle{ display:none; background:none; border:1px solid var(--line); border-radius:var(--radius); padding:8px 10px; font-family:'IBM Plex Mono',monospace; cursor:pointer;}
+  .nav-hire{ padding:9px 16px; font-size:13px; }
+
+  @media (max-width:760px){
+    nav.links{
+      position:absolute; top:100%; left:0; right:0;
+      background:var(--bg-panel); border-bottom:1px solid var(--line);
+      flex-direction:column; padding:16px 28px; gap:16px;
+      display:none;
+    }
+    nav.links.open{ display:flex; }
+    .nav-toggle{ display:block; }
+    .nav-inner{ gap:12px; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding:72px 0 56px; }
+  .hero-grid{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;
+  }
+  @media (max-width:900px){ .hero-grid{ grid-template-columns:1fr; } }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--pass);
+    text-transform:uppercase; letter-spacing:0.08em; margin-bottom:16px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .eyebrow::before{ content:''; width:22px; height:1px; background:var(--pass); display:inline-block; }
+
+  .hero h1{
+    font-size:clamp(34px,5vw,52px); line-height:1.08; margin-bottom:20px;
+  }
+  .hero h1 em{ font-style:normal; color:var(--pass); }
+
+  .hero p.lede{
+    font-size:18px; color:var(--ink-muted); max-width:46ch; margin-bottom:32px;
+  }
+
+  .cta-row{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    font-family:'IBM Plex Mono',monospace; font-size:14px; font-weight:500;
+    padding:13px 22px; border-radius:var(--radius); text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary{ background:var(--ink); color:var(--bg); }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 6px 0 var(--line); }
+  .btn-ghost{ background:transparent; color:var(--ink); border:1px solid var(--line); }
+  .btn-ghost:hover{ border-color:var(--ink); }
+
+  /* ---------- CONSOLE (signature element) ---------- */
+  .console{
+    background:var(--console); border-radius:6px; overflow:hidden;
+    box-shadow:0 24px 48px -20px rgba(20,30,25,0.35);
+    border:1px solid var(--console-line);
+  }
+  .console-bar{
+    display:flex; align-items:center; gap:8px; padding:12px 16px;
+    border-bottom:1px solid var(--console-line);
+  }
+  .console-bar span{ width:9px; height:9px; border-radius:50%; background:#465058; }
+  .console-title{
+    margin-left:8px; font-family:'IBM Plex Mono',monospace; font-size:12px; color:#7C8790;
+  }
+  .console-body{
+    padding:20px 18px; font-family:'IBM Plex Mono',monospace; font-size:13px;
+    color:var(--console-text); min-height:260px;
+  }
+  .console-body .ln{ display:flex; gap:10px; opacity:0; animation:fadeIn .4s ease forwards; margin-bottom:9px; }
+  .console-body .num{ color:#4B5760; width:16px; flex-shrink:0; text-align:right; }
+  .console-body .status{ margin-left:auto; font-weight:600; }
+  .status.pass{ color:var(--pass); }
+  .status.run{ color:var(--amber); }
+  @keyframes fadeIn{ to{ opacity:1; } }
+
+  .console-summary{
+    border-top:1px solid var(--console-line); padding:14px 18px;
+    font-family:'IBM Plex Mono',monospace; font-size:12px; color:#7C8790;
+    display:flex; justify-content:space-between;
+  }
+  .console-summary strong{ color:var(--pass); }
+
+  /* ---------- STATS ---------- */
+  .stats{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    padding:36px 0;
+  }
+  .stats-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:24px; text-align:left;
+  }
+  @media (max-width:700px){ .stats-grid{ grid-template-columns:1fr 1fr; } }
+  .stat-num{
+    font-family:'Space Grotesk',sans-serif; font-size:34px; font-weight:600; color:var(--ink);
+  }
+  .stat-label{ font-size:13px; color:var(--ink-muted); margin-top:4px; }
+
+  /* ---------- SECTION shared ---------- */
+  section{ padding:88px 0; }
+  .sec-head{ margin-bottom:44px; max-width:640px; }
+  .sec-eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink-muted);
+    text-transform:uppercase; letter-spacing:0.1em; margin-bottom:10px;
+  }
+  .sec-head h2{ font-size:clamp(26px,3.4vw,36px); }
+  .sec-head p{ color:var(--ink-muted); margin-top:12px; font-size:16px; }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{ display:grid; grid-template-columns:1.2fr 1fr; gap:48px; }
+  @media (max-width:800px){ .about-grid{ grid-template-columns:1fr; } }
+  .about-grid p{ color:var(--ink-muted); font-size:16px; margin:0 0 16px; }
+  .about-list{ list-style:none; margin:0; padding:0; }
+  .about-list li{
+    display:flex; gap:12px; padding:12px 0; border-bottom:1px solid var(--line); font-size:14.5px;
+  }
+  .about-list li:first-child{ padding-top:0; }
+  .about-list .tag{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--pass);
+    background:var(--pass-dim); padding:2px 7px; border-radius:3px; height:fit-content;
+    white-space:nowrap;
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skill-groups{ display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+  @media (max-width:700px){ .skill-groups{ grid-template-columns:1fr; } }
+  .skill-card{
+    background:var(--bg-panel); border:1px solid var(--line); border-radius:6px; padding:22px;
+  }
+  .skill-card h3{
+    font-size:14px; font-family:'IBM Plex Mono',monospace; color:var(--ink-muted);
+    text-transform:uppercase; letter-spacing:0.05em; margin-bottom:14px; font-weight:600;
+  }
+  .chip-row{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip{
+    font-size:13px; padding:6px 12px; border-radius:20px; background:var(--bg);
+    border:1px solid var(--line); color:var(--ink);
+  }
+
+  /* ---------- EXPERIENCE ---------- */
+  .timeline{ position:relative; }
+  .tl-item{
+    display:grid; grid-template-columns:120px 1fr; gap:28px;
+    padding:28px 0; border-top:1px solid var(--line);
+  }
+  .tl-item:first-child{ border-top:1px solid var(--line); }
+  @media (max-width:700px){ .tl-item{ grid-template-columns:1fr; gap:8px; } }
+  .tl-id{
+    font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--pass); font-weight:600;
+    padding-top:2px;
+  }
+  .tl-dates{ font-size:12px; color:var(--ink-muted); margin-top:4px; }
+  .tl-content h3{ font-size:19px; margin-bottom:2px; }
+  .tl-content .company{ font-size:14px; color:var(--ink-muted); margin-bottom:14px; }
+  .tl-content ul{ margin:0; padding-left:18px; color:var(--ink-muted); font-size:14.5px; }
+  .tl-content li{ margin-bottom:7px; }
+
+  /* ---------- PROJECTS ---------- */
+  .proj-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:22px; align-items:start; }
+  @media (max-width:760px){ .proj-grid{ grid-template-columns:1fr; } }
+  .proj-card{
+    background:var(--bg-panel); border:1px solid var(--line); border-radius:6px;
+    padding:26px; display:flex; flex-direction:column; gap:14px;
+  }
+  .proj-tag{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--amber);
+    background:var(--amber-dim); padding:3px 8px; border-radius:3px; width:fit-content;
+  }
+  .proj-card h3{ font-size:19px; }
+  .proj-card p{ color:var(--ink-muted); font-size:14.5px; margin:0; }
+  .proj-card ul{ margin:4px 0 0; padding-left:18px; color:var(--ink-muted); font-size:14px; }
+  .proj-card li{ margin-bottom:5px; }
+
+  /* ---------- EDUCATION ---------- */
+  .edu-row{
+    display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px;
+    padding:20px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .edu-row h3{ font-size:17px; }
+  .edu-row span{ font-size:13px; color:var(--ink-muted); font-family:'IBM Plex Mono',monospace; }
+
+  /* ---------- CONTACT ---------- */
+  .contact{ background:var(--console); border-radius:8px; padding:56px 40px; color:#fff; text-align:center; }
+  @media (max-width:600px){ .contact{ padding:40px 22px; } }
+  .contact .sec-eyebrow{ color:#7C8790; }
+  .contact h2{ color:#fff; font-size:clamp(28px,4vw,40px); margin-bottom:14px; }
+  .contact p{ color:#9AA6AB; max-width:46ch; margin:0 auto 32px; font-size:16px; }
+  .contact-links{ display:flex; justify-content:center; gap:14px; flex-wrap:wrap; }
+  .contact .btn-primary{ background:var(--pass); color:#fff; }
+  .contact .btn-primary:hover{ box-shadow:0 6px 0 #1c5f45; }
+  .contact .btn-ghost{ border-color:#3A454C; color:#E5E9EA; }
+  .contact .btn-ghost:hover{ border-color:#7C8790; }
+
+  footer{
+    padding:32px 0 48px; text-align:center; font-size:13px; color:var(--ink-muted);
+    font-family:'IBM Plex Mono',monospace;
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav-inner">
+    <div class="brand"><span class="dot"></span> ALISHBA.JAVAID</div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">MENU</button>
+    <nav class="links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-primary nav-hire" href="#contact">Hire Me</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">QA Engineer · Lahore, Pakistan</div>
+        <h1>I test what ships,<br>so bugs don't <em>ship with it.</em></h1>
+        <p class="lede">5+ years finding what breaks before your users do — across manual, API, and performance testing for web and mobile products in Agile teams.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#contact">Get in touch</a>
+          <a class="btn btn-ghost" href="#experience">See my work</a>
+        </div>
+      </div>
+
+      <div class="console" aria-hidden="true">
+        <div class="console-bar">
+          <span></span><span></span><span></span>
+          <span class="console-title">regression_suite.run</span>
+        </div>
+        <div class="console-body" id="consoleBody"></div>
+        <div class="console-summary">
+          <span>checkout · payments · api · db</span>
+          <span><strong>5 passed</strong> · 0 failed</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stats-grid">
+      <div><div class="stat-num">5+</div><div class="stat-label">Years in QA</div></div>
+      <div><div class="stat-num">4</div><div class="stat-label">Companies, Agile teams</div></div>
+      <div><div class="stat-num">3</div><div class="stat-label">Testing domains: Manual, API, Performance</div></div>
+      <div><div class="stat-num">6</div><div class="stat-label">Products tested end to end</div></div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="sec-head">
+      <div class="sec-eyebrow">01 · About</div>
+      <h2>Quality isn't a phase, it's a habit</h2>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p>I'm a Software QA Engineer with over five years of experience testing web and mobile applications in Agile environments. I work across the full stack of quality — manual and functional testing, REST API validation, performance and load testing, and direct database verification — rather than stopping at the UI.</p>
+        <p>Most recently, as Senior QA Engineer at an eCommerce platform, I test end-to-end buyer and seller workflows: product catalog, cart, checkout, payments, and order management, backed by Postman/Swagger API checks and JMeter load testing. Across my career I've tested 6+ live products spanning eCommerce, matrimonial, travel, and social/experience-booking apps — and I write Playwright automation scripts in JavaScript/TypeScript for smoke and regression coverage.</p>
+      </div>
+      <ul class="about-list">
+        <li><span class="tag">BASE</span> Lahore, Pakistan</li>
+        <li><span class="tag">EDU</span> BBIT, University of the Punjab</li>
+        <li><span class="tag">CORE</span> Manual, API &amp; Performance Testing</li>
+        <li><span class="tag">DB</span> MongoDB &amp; PostgreSQL query validation</li>
+        <li><span class="tag">AUTO</span> Playwright (JS/TS)</li>
+        <li><span class="tag">FLOW</span> Agile / Scrum, SDLC &amp; STLC</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="sec-head">
+      <div class="sec-eyebrow">02 · Skills</div>
+      <h2>What I test, and how</h2>
+    </div>
+    <div class="skill-groups">
+      <div class="skill-card">
+        <h3>Manual &amp; Functional</h3>
+        <div class="chip-row">
+          <span class="chip">Functional Testing</span>
+          <span class="chip">Regression Testing</span>
+          <span class="chip">Smoke &amp; Sanity</span>
+          <span class="chip">Exploratory Testing</span>
+          <span class="chip">Cross-Browser Testing</span>
+          <span class="chip">UAT Support</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>API &amp; Performance</h3>
+        <div class="chip-row">
+          <span class="chip">Postman</span>
+          <span class="chip">Swagger</span>
+          <span class="chip">JMeter</span>
+          <span class="chip">Load &amp; Rate-Limit Testing</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Database &amp; Automation</h3>
+        <div class="chip-row">
+          <span class="chip">MongoDB</span>
+          <span class="chip">PostgreSQL</span>
+          <span class="chip">Playwright (JS/TS)</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">TypeScript</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Process &amp; Tools</h3>
+        <div class="chip-row">
+          <span class="chip">JIRA</span>
+          <span class="chip">Zoho Projects</span>
+          <span class="chip">Agile / Scrum</span>
+          <span class="chip">SDLC / STLC</span>
+          <span class="chip">Chrome DevTools</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="sec-head">
+      <div class="sec-eyebrow">03 · Experience</div>
+      <h2>Test cases, by role</h2>
+    </div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div>
+          <div class="tl-id">TC-01</div>
+          <div class="tl-dates">Dec 2024 – Feb 2026</div>
+        </div>
+        <div class="tl-content">
+          <h3>Sr. Software Quality Assurance Engineer</h3>
+          <div class="company">Cybermart · Lahore</div>
+          <ul>
+            <li>End-to-end manual and functional testing for eCommerce workflows — product catalog, cart, checkout, payments, and order management.</li>
+            <li>Validated REST APIs using Postman and Swagger; ran rate limiter, performance, and load testing via Postman Runner and JMeter.</li>
+            <li>Verified backend data accuracy through MongoDB and PostgreSQL queries.</li>
+            <li>Logged and triaged defects in JIRA, improving issue resolution time and reducing regression leakage.</li>
+            <li>Built and executed Playwright automation scripts in JavaScript for critical smoke and regression scenarios.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div>
+          <div class="tl-id">TC-02</div>
+          <div class="tl-dates">Mar 2024 – Oct 2024</div>
+        </div>
+        <div class="tl-content">
+          <h3>Software Quality Assurance Engineer</h3>
+          <div class="company">WorkTech · Lahore</div>
+          <ul>
+            <li>Conducted UI/UX, functional, and regression testing for responsive web and mobile applications.</li>
+            <li>Managed defect tracking and reporting in Zoho Projects, improving bug-fix turnaround time.</li>
+            <li>Performed exploratory testing to identify critical edge cases prior to production releases.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div>
+          <div class="tl-id">TC-03</div>
+          <div class="tl-dates">Jan 2023 – Jan 2024</div>
+        </div>
+        <div class="tl-content">
+          <h3>Software Quality Assurance Engineer</h3>
+          <div class="company">Techanah · Lahore</div>
+          <ul>
+            <li>Designed and executed manual test cases and test scenarios across two products, achieving high test coverage.</li>
+            <li>Logged and managed defects in JIRA with detailed reproduction steps and severity prioritization.</li>
+            <li>Conducted cross-browser testing on Chrome, Firefox, and Safari to ensure UI consistency.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div>
+          <div class="tl-id">TC-04</div>
+          <div class="tl-dates">Dec 2020 – Dec 2022</div>
+        </div>
+        <div class="tl-content">
+          <h3>Software Quality Assurance Analyst</h3>
+          <div class="company">Interlink Multi Media · Lahore</div>
+          <ul>
+            <li>Created and executed test cases for mobile and web platforms, including admin dashboards and user portals.</li>
+            <li>Performed functional and regression testing across sprint cycles.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="sec-head">
+      <div class="sec-eyebrow">04 · Projects</div>
+      <h2>What I've tested end to end</h2>
+      <p>Six live products across eCommerce, matrimonial, travel, and social/experience booking — plus a sample automation script.</p>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <span class="proj-tag">WEB</span>
+        <h3>Cybermart — eCommerce Platform</h3>
+        <p>Buyer site (cybermart.com / .pk) and seller portal (seller.cybermart.com / .pk).</p>
+        <ul>
+          <li>End-to-end manual testing of product listings, cart, checkout, and order management.</li>
+          <li>Validated REST APIs and backend data consistency for buyer and seller interactions.</li>
+          <li>Executed functional, regression, and smoke testing across web modules.</li>
+        </ul>
+      </div>
+      <div class="proj-card">
+        <span class="proj-tag">ANDROID · IOS · WEB</span>
+        <h3>Dil Ka Rishta — Matrimonial App</h3>
+        <p>Mobile-first matrimonial platform with onboarding and matching flows.</p>
+        <ul>
+          <li>Tested onboarding, profile creation, search filters, and chat features.</li>
+          <li>Logged, tracked, and retested 50+ defects during pre-release cycles.</li>
+          <li>Ensured cross-device compatibility and smooth user experience.</li>
+        </ul>
+      </div>
+      <div class="proj-card">
+        <span class="proj-tag">ANDROID · IOS · WEB</span>
+        <h3>Reserval — Hotel &amp; Flight Booking</h3>
+        <p>Cross-platform booking application spanning Android, iOS, and Web.</p>
+        <ul>
+          <li>Tested complete booking workflows, calendar integrations, and payment gateway functionality.</li>
+          <li>Collaborated closely with developers to resolve API and UI issues before launch.</li>
+          <li>Regression testing to validate fixes across successive releases.</li>
+        </ul>
+      </div>
+      <div class="proj-card">
+        <span class="proj-tag">ANDROID · IOS · WEB</span>
+        <h3>Fayvo / Fayvo X — Experience Booking &amp; Social Platform</h3>
+        <p>Multi-module social platform for posting and booking experiences.</p>
+        <ul>
+          <li>Verified experience posting, booking, and user feed features.</li>
+          <li>Executed smoke and regression testing for major production releases.</li>
+          <li>Ensured feature stability across frequent updates.</li>
+        </ul>
+      </div>
+      <div class="proj-card">
+        <span class="proj-tag">ANDROID · IOS</span>
+        <h3>Ziyara Go — Travel Discovery App</h3>
+        <p>Location-based travel discovery application.</p>
+        <ul>
+          <li>Validated location-based features, maps integration, and UI responsiveness.</li>
+          <li>Regression testing to maintain stability during frequent content updates.</li>
+          <li>Tested across multiple devices and OS versions.</li>
+        </ul>
+      </div>
+      <div class="proj-card">
+        <span class="proj-tag">ANDROID</span>
+        <h3>PlayScout — Activity Discovery Platform</h3>
+        <p>Android app for discovering and booking local activities.</p>
+        <ul>
+          <li>Tested core user flows: activity search, booking, and location filtering.</li>
+          <li>Identified and reported usability issues, contributing to improved user experience.</li>
+        </ul>
+      </div>
+      <div class="proj-card">
+        <span class="proj-tag">GITHUB · JS/TS</span>
+        <h3>Sample Automation Script</h3>
+        <p>Playwright automation script (JavaScript/TypeScript) written for an eCommerce site, covering key user flows end to end.</p>
+        <ul>
+          <li>Written and maintained independently to demonstrate automation approach and coding style.</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://github.com/AlishbaJavaid/Sample-Automation-Script" target="_blank" rel="noopener" style="width:fit-content; margin-top:4px;">View on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" style="padding-top:0;">
+    <div class="sec-head">
+      <div class="sec-eyebrow">05 · Education</div>
+      <h2>Foundation</h2>
+    </div>
+    <div class="edu-row">
+      <h3>Bachelors in Business &amp; Information Technology (BBIT)</h3>
+      <span>University of the Punjab, Lahore</span>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact">
+      <div class="sec-eyebrow">06 · Contact</div>
+      <h2>Let's talk quality</h2>
+      <p>Open to Software QA Engineer roles — manual, API, and performance testing. Based in Lahore, open to remote.</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:alishbajavaid160@gmail.com">Email Me</a>
+        <a class="btn btn-ghost" href="tel:+923324671406">Call Me</a>
+        <a class="btn btn-ghost" href="https://wa.me/qr/E7S4SJ5DEWGWP1" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn btn-ghost" href="https://linkedin.com/in/alishbajavaid-sqae" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>© 2026 Alishba Javaid · Software QA Engineer</footer>
+
+<script>
+  // Nav toggle for mobile
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  // Console typing sequence — signature hero element
+  const lines = [
+    { text: 'checkout_flow.spec', status: 'PASS' },
+    { text: 'payment_gateway.api', status: 'PASS' },
+    { text: 'order_status.db_check', status: 'PASS' },
+    { text: 'rate_limiter.load_test', status: 'PASS' },
+    { text: 'regression_suite.smoke', status: 'PASS' },
+  ];
+
+  const body = document.getElementById('consoleBody');
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function renderLine(i, showStatus) {
+    const row = document.createElement('div');
+    row.className = 'ln';
+    row.style.animationDelay = prefersReduced ? '0s' : (i * 0.12) + 's';
+    row.innerHTML =
+      '<span class="num">' + (i + 1).toString().padStart(2, '0') + '</span>' +
+      '<span>' + lines[i].text + '</span>' +
+      (showStatus ? '<span class="status pass">✓ ' + lines[i].status + '</span>' : '<span class="status run">running…</span>');
+    body.appendChild(row);
+    return row;
+  }
+
+  if (prefersReduced) {
+    lines.forEach((_, i) => renderLine(i, true));
+  } else {
+    lines.forEach((_, i) => {
+      const runningRow = renderLine(i, false);
+      setTimeout(() => {
+        runningRow.querySelector('.status').outerHTML = '<span class="status pass">✓ PASS</span>';
+      }, i * 500 + 550);
+    });
+  }
+</script>
+
+</body>
+</html>
